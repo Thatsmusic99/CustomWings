@@ -1,7 +1,6 @@
-package tigeax.customwings.main;
+package tigeax.customwings;
 
 import java.util.UUID;
-
 import tigeax.customwings.editor.SettingType;
 import tigeax.customwings.gui.CWGUIManager;
 import tigeax.customwings.gui.CWGUIType;
@@ -12,6 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import tigeax.customwings.wings.Wing;
 
 /*
  * Class made for every player interacting with the plugin
@@ -26,6 +26,7 @@ public class CWPlayer {
 
 	private Wing equippedWing;
 	private boolean hideOtherPlayerWings;
+	private String wingFilter;
 
 	private SettingType waitingSetting;
 	private Object waitingSettingInfo;
@@ -42,6 +43,7 @@ public class CWPlayer {
 
 		this.equippedWing = null;
 		this.hideOtherPlayerWings = false;
+		this.wingFilter = "none";
 
 		this.waitingSetting = null;
 		this.waitingSettingInfo = null;
@@ -156,6 +158,14 @@ public class CWPlayer {
 		Inventory emptyInv = Bukkit.createInventory(null, 54, "");
 		this.getPlayer().openInventory(emptyInv);
 		this.getPlayer().closeInventory();
+	}
+
+	public String getWingFilter() {
+		return wingFilter;
+	}
+
+	public void setWingFilter(String filter) {
+		wingFilter = filter;
 	}
 
 }
